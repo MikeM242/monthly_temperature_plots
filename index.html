@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Monthly Tables</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #87CEEB;
+    }
+    select {
+      padding: 16px;
+      font-size: 16px;
+    }
+    #content {
+      border: 1px solid #ccc;
+      margin-top: 20px;
+      padding: 15px;
+      min-height: 400px;
+    }
+  </style>
+</head>
+<body>
+  <h2>View Monthly Temperature Bar Graphs</h2>
+
+  <select id="monthSelector" onchange="loadPage()">
+    <option value="">-- Select a month --</option>
+    <!-- Months from Dec 2020 to February 2026 -->
+    <option value="weather_chart_2020_12.png">December 2020</option>
+    <option value="weather_chart_2021_01.png">January 2021</option>
+    <option value="weather_chart_2021_02.png">February 2021</option>
+    <option value="weather_chart_2021_03.png">March 2021</option>
+    <option value="weather_chart_2021_04.png">April 2021</option>
+    <option value="weather_chart_2021_05.png">May 2021</option>
+    <option value="weather_chart_2021_06.png">June 2021</option>
+    <option value="weather_chart_2021_07.png">July 2021</option>
+    <option value="weather_chart_2021_08.png">August 2021</option>
+    <option value="weather_chart_2021_09.png">September 2021</option>
+    <option value="weather_chart_2021_10.png">October 2021</option>
+    <option value="weather_chart_2021_11.png">November 2021</option>
+    <option value="weather_chart_2021_12.png">December 2021</option>
+    <option value="weather_chart_2022_01.png">January 2022</option>
+    <option value="weather_chart_2022_02.png">February 2022</option>
+    <option value="weather_chart_2022_03.png">March 2022</option>
+    <option value="weather_chart_2022_04.png">April 2022</option>
+    <option value="weather_chart_2022_05.png">May 2022</option>
+    <option value="weather_chart_2022_06.png">June 2022</option>
+    <option value="weather_chart_2022_07.png">July 2022</option>
+    <option value="weather_chart_2022_08.png">August 2022</option>
+    <option value="weather_chart_2022_09.png">September 2022</option>
+    <option value="weather_chart_2022_10.png">October 2022</option>
+    <option value="weather_chart_2022_11.png">November 2022</option>
+    <option value="weather_chart_2022_12.png">December 2022</option>
+    <option value="weather_chart_2023_01.png">January 2023</option>
+    <option value="weather_chart_2023_02.png">February 2023</option>
+    <option value="weather_chart_2023_03.png">March 2023</option>
+    <option value="weather_chart_2023_04.png">April 2023</option>
+    <option value="weather_chart_2023_05.png">May 2023</option>
+    <option value="weather_chart_2023_06.png">June 2023</option>
+    <option value="weather_chart_2023_07.png">July 2023</option>
+    <option value="weather_chart_2023_08.png">August 2023</option>
+    <option value="weather_chart_2023_09.png">September 2023</option>
+    <option value="weather_chart_2023_10.png">October 2023</option>
+    <option value="weather_chart_2023_11.png">November 2023</option>
+    <option value="weather_chart_2023_12.png">December 2023</option>
+    <option value="weather_chart_2024_01.png">January 2024</option>
+    <option value="weather_chart_2024_02.png">February 2024</option>
+    <option value="weather_chart_2024_03.png">March 2024</option>
+    <option value="weather_chart_2024_04.png">April 2024</option>
+    <option value="weather_chart_2024_05.png">May 2024</option>
+    <option value="weather_chart_2024_06.png">June 2024</option>
+    <option value="weather_chart_2024_07.png">July 2024</option>
+    <option value="weather_chart_2024_08.png">August 2024</option>
+    <option value="weather_chart_2024_09.png">September 2024</option>
+    <option value="weather_chart_2024_10.png">October 2024</option>
+    <option value="weather_chart_2024_11.png">November 2024</option>
+    <option value="weather_chart_2024_12.png">December 2024</option>
+    <option value="weather_chart_2025_01.png">January 2025</option>
+    <option value="weather_chart_2025_02.png">February 2025</option>
+    <option value="weather_chart_2025_03.png">March 2025</option>
+    <option value="weather_chart_2025_04.png">April 2025</option>
+    <option value="weather_chart_2025_05.png">May 2025</option>
+    <option value="weather_chart_2025_06.png">June 2025</option>
+    <option value="weather_chart_2025_07.png">July 2025</option>
+    <option value="weather_chart_2025_08.png">August 2025</option>
+    <option value="weather_chart_2025_09.png">September 2025</option>
+    <option value="weather_chart_2025_10.png">October 2025</option>
+    <option value="weather_chart_2025_11.png">November 2025</option>
+    <option value="weather_chart_2025_12.png">December 2025</option>
+    <option value="weather_chart_2026_01.png">January 2026</option>
+    <option value="weather_chart_2026_02.png">February 2026</option>
+    <option value="weather_chart_2026_03.png">March 2026</option>
+    <option value="weather_chart_2026_04.png">April 2026</option>
+    <option value="weather_chart_2026_05.png">May 2026</option>
+    <option value="weather_chart_2026_06.png">June 2026</option>
+    <option value="weather_chart_2026_07.png">July 2026</option>
+    <option value="weather_chart_2026_08.png">August 2026</option>
+  </select>
+
+  <div id="content">
+    <p>Please select a month to load its data.</p>
+  </div>
+
+  <script>
+    function loadPage() {
+      const selector = document.getElementById('monthSelector');
+      const file = selector.value;
+
+      if (!file) {
+        document.getElementById('content').innerHTML = "<p>Please select a month to load its data.</p>";
+        return;
+      }
+
+      fetch(file)
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('File not found.');
+          }
+          return response.text();
+        })
+        .then(html => {
+          document.getElementById('content').innerHTML = html;
+        })
+        .catch(error => {
+          document.getElementById('content').innerHTML = `<p style="color:red;">Error loading file: ${error.message}</p>`;
+        });
+    }
+  </script>
+</body>
+</html>
