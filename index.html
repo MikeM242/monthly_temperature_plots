@@ -7,17 +7,29 @@
     body {
       font-family: Arial, sans-serif;
       padding: 20px;
-      background-color: #87CEEB;
+      background-color: #ffffff; /* Swapped sky blue for a clean white background */
     }
     select {
       padding: 16px;
       font-size: 16px;
+      cursor: pointer;
     }
     #content {
       border: 1px solid #ccc;
       margin-top: 20px;
       padding: 15px;
       min-height: 400px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #fcfcfc;
+    }
+    /* Controls weather chart dimensions safely */
+    .weather-chart {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     }
   </style>
 </head>
@@ -26,7 +38,7 @@
 
   <select id="monthSelector" onchange="loadPage()">
     <option value="">-- Select a month --</option>
-    <!-- Months from Dec 2020 to February 2026 -->
+    <!-- Months from Dec 2020 to August 2026 -->
     <option value="weather_chart_2020_12.png">December 2020</option>
     <option value="weather_chart_2021_01.png">January 2021</option>
     <option value="weather_chart_2021_02.png">February 2021</option>
@@ -106,25 +118,15 @@
     function loadPage() {
       const selector = document.getElementById('monthSelector');
       const file = selector.value;
+      const contentDiv = document.getElementById('content');
 
       if (!file) {
-        document.getElementById('content').innerHTML = "<p>Please select a month to load its data.</p>";
+        contentDiv.innerHTML = "<p>Please select a month to load its data.</p>";
         return;
       }
 
-      fetch(file)
-        .then(response => {
-          if (!response.ok) {
-            throw new Error('File not found.');
-          }
-          return response.text();
-        })
-        .then(html => {
-          document.getElementById('content').innerHTML = html;
-        })
-        .catch(error => {
-          document.getElementById('content').innerHTML = `<p style="color:red;">Error loading file: ${error.message}</p>`;
-        });
+      // Replaced the network fetch with a native image tag implementation
+      contentDiv.innerHTML = `<img src="${file}" class="weather-chart" alt="Weather Chart for ${selector.options[selector.selectedIndex].text}" />`;
     }
   </script>
 </body>
